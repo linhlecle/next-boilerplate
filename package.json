@@ -1,0 +1,56 @@
+{
+  "name": "higher-speaking",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "build": "node ./scripts/extract-intl.js && next build",
+    "start": "NODE_ENV=production node server.js",
+    "analyze": "ANALYZE=true yarn build",
+    "lint:fix": "eslint --fix . --ext .jsx,.js && echo 'Lint complete.'",
+    "extract-intl": "node ./scripts/extract-intl.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ],
+    "*.{js,jsx}": [
+      "npm run lint:fix",
+      "git add --force"
+    ]
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookies-next": "^1.0.6",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "intl": "^1.2.5",
+    "next": "9.1.5",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-intl": "^3.9.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^9.1.5",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-react-intl": "^5.1.11",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^3.1.0",
+    "image-webpack-loader": "^6.0.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "shelljs": "^0.8.3",
+    "url-loader": "^3.0.0"
+  }
+}
